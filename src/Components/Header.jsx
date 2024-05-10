@@ -2,15 +2,22 @@ import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import useAuth from '../Hooks/useAuth';
 
 const Header = () => {
+    const {user, logOut} = useAuth();
     const [theme, setTheme] = useState(localStorage.getItem('local-theme') || 'light');
     const navLinks = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/services'>Services</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
+        <li><NavLink className={({isActive}) =>isActive? "btn btn-info": "btn btn-outline btn-info"} to='/'>Home</NavLink></li>
+        <li><NavLink className={({isActive}) =>isActive? "btn btn-info": "btn btn-outline btn-info"} to='/services'>Services</NavLink></li>
+        <li><NavLink className={({isActive}) =>isActive? "btn btn-info": "btn btn-outline btn-info"} to='/login'>Login</NavLink></li>
     </>
 
+    const handleLogOut = ()=>{
+        logOut()
+        .then()
+        .catch()
+    }
     useEffect(() => {
         localStorage.setItem('local-theme', theme);
         const localTheme = localStorage.getItem('local-theme');
@@ -49,6 +56,9 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 <a className="btn">Button</a>
+                {
+                    user? <button onClick={handleLogOut} className='btn btn-ghost'>Logout</button> : <p>No user</p>
+                }
                 <label className="flex cursor-pointer gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg>
                     <input type="checkbox"
