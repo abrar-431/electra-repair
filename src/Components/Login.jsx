@@ -68,7 +68,7 @@ const Login = () => {
                         <h2 className="text-2xl font-bold text-center">Welcome , Login Now!</h2>
                         <hr className='w-1/6 mx-auto mt-2 bg-blue-800 border-0 h-1 rounded-full' />
                         <form onSubmit={handleLogin} className="">
-                            <div className='bg-blue-300 p-16 m-12 rounded-lg shadow-lg'>
+                            <div className='bg-blue-300 md:p-16 p-4 md:m-12 m-2 rounded-lg shadow-lg'>
                                 <div className="form-control">
                                     <label className="label font-semibold">
                                         <span className="label-text">Email</span>
@@ -96,11 +96,11 @@ const Login = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="mt-6 w-1/2 mx-auto">
+                            <div className="mt-6 md:w-1/2 w-full mx-auto">
                                 <AwesomeButton className='rounded-lg w-full' type="secondary">Login</AwesomeButton>
                             </div>
                         </form>
-                        <div className='mx-auto mt-3 w-1/2'>
+                        <div className='mx-auto mt-3 md:w-1/2 w-full'>
                             <AwesomeButton onPress={handleGoogleLogin} className='rounded-lg flex items-center w-full' type="primary">
                                 <FaGoogle className='text-xl mr-2'></FaGoogle>
                                 <p>Login With Google</p>
