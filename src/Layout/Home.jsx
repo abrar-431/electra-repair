@@ -1,9 +1,10 @@
-import { Facebook } from "react-content-loader";
+import Banner from "../Components/Banner/Banner";
+
 
 const Home = () => {
     return (
         <div>
-            <Facebook/>
+            <Banner></Banner>
         </div>
     );
 };
