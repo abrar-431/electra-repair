@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet-async";
 import service from '../assets/add_service.jpg'
 import { AwesomeButton } from "react-awesome-button";
 import useAuth from "../Hooks/useAuth";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddService = () => {
     const { user } = useAuth();
@@ -22,6 +24,12 @@ const AddService = () => {
         providerName:user.displayName,
     };
     console.log(newUser);
+    axios.post('http://localhost:5000/services', newUser)
+    .then(res=>{
+        if(res.data.insertedId){
+            toast('Your service was added successfully');
+        }
+    })
     form.reset();
 }
 return (
@@ -81,6 +89,7 @@ return (
                 </div>
             </Bounce>
         </div>
+        <ToastContainer/>
     </div>
 );
 };
