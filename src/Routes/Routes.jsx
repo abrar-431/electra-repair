@@ -8,6 +8,7 @@ import Register from "../Components/Register";
 import Login from "../Components/Login";
 import AddService from "../Components/AddService";
 import PrivateRoute from "./PrivateRoute";
+import ServiceDetails from "../Layout/ServiceDetails";
 
   const router = createBrowserRouter([
     {
@@ -34,6 +35,11 @@ import PrivateRoute from "./PrivateRoute";
         {
           path: '/add-service',
           element: <PrivateRoute><AddService></AddService></PrivateRoute>
+        },
+        {
+          path: '/services/:id',
+          element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
+          loader: ({params})=>fetch(`http://localhost:5000/services/${params.id}`)
         }
       ]
     },

@@ -11,9 +11,9 @@ import Typography from '@mui/material/Typography';
 import { Fa0, FaMapLocationDot } from 'react-icons/fa6';
 import { FaExpand, FaMoneyBillWave } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import { Roll, Slide } from 'react-awesome-reveal';
+import {  Slide } from 'react-awesome-reveal';
 import { AwesomeButton } from 'react-awesome-button';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -29,7 +29,6 @@ const ExpandMore = styled((props) => {
 export default function Service({ singleService, idx }) {
     const [expanded, setExpanded] = React.useState(false);
     const { _id, service, area, image, price, description, providerName, providerImage } = singleService;
-    console.log(idx)
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -96,4 +95,5 @@ export default function Service({ singleService, idx }) {
 
 Service.propTypes = {
     singleService: PropTypes.object,
+    idx: PropTypes.number,
 }
