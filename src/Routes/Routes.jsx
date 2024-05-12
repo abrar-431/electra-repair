@@ -6,6 +6,8 @@ import Services from "../Layout/Services";
 import Home from "../Layout/Home";
 import Register from "../Components/Register";
 import Login from "../Components/Login";
+import AddService from "../Components/AddService";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -27,6 +29,10 @@ import Login from "../Components/Login";
         {
           path: '/login',
           element: <Login></Login>
+        },
+        {
+          path: '/add-service',
+          element: <PrivateRoute><AddService></AddService></PrivateRoute>
         }
       ]
     },

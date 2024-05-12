@@ -6,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LuMousePointerClick } from "react-icons/lu";
 import { FaGoogle } from 'react-icons/fa6';
 import { Helmet } from 'react-helmet-async';
@@ -16,6 +16,8 @@ import { ToastContainer, toast } from 'react-toastify';
 const Login = () => {
     const [show, setShow] = useState(false);
     const { signIn, googleSignIn } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
     const handleShow = () => {
         setShow(!show);
     }
@@ -29,6 +31,9 @@ const Login = () => {
             .then(res => {
                 console.log(res.user);
                 toast.success('Your login was successful!');
+                {
+                    location?.state? navigate(location.state) : navigate('/');
+                }
             })
             .catch(error => {
                 console.log(error.message)
@@ -42,6 +47,9 @@ const Login = () => {
             .then(res => {
                 console.log(res.user);
                 toast.success('Your login was successful!');
+                {
+                    location?.state? navigate(location.state) : navigate('/');
+                }
             })
             .catch(error => {
                 console.error(error.message)
