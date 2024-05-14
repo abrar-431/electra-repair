@@ -11,7 +11,7 @@ export default {
     require('daisyui'),
   ],
   daisyui: {
-    themes: ["light", "sunset"],
+    themes: ["light", "sunset", "dark"],
   },
 }
 

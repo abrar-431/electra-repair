@@ -8,6 +8,12 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const auth = getAuth(app);
+    const [theme, setTheme] = useState(localStorage.getItem('local-theme') || 'light');
+    useEffect(() => {
+        localStorage.setItem('local-theme', theme);
+        const localTheme = localStorage.getItem('local-theme');
+        document.querySelector('html').setAttribute('data-theme', localTheme);
+    }, [theme])
 
     const signUp = (email, password) =>{
         setLoading(true);
@@ -43,6 +49,7 @@ const AuthProvider = ({children}) => {
         logOut,
         googleSignIn,
         auth,
+        theme, setTheme
     }
     return (
         <AuthContext.Provider value={AuthInfo}>

@@ -1,12 +1,10 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png'
-import { useState } from 'react';
-import { useEffect } from 'react';
 import useAuth from '../Hooks/useAuth';
 
 const Header = () => {
-    const { user, logOut } = useAuth();
-    const [theme, setTheme] = useState(localStorage.getItem('local-theme') || 'light');
+    const { user, logOut, theme, setTheme } = useAuth();
+    
     const location = useLocation();
     const navLinks = <>
         <li><NavLink className={({ isActive }) => isActive ? "btn btn-info" : "btn btn-outline btn-info"} to='/'>Home</NavLink></li>
@@ -36,11 +34,7 @@ const Header = () => {
             .then()
             .catch()
     }
-    useEffect(() => {
-        localStorage.setItem('local-theme', theme);
-        const localTheme = localStorage.getItem('local-theme');
-        document.querySelector('html').setAttribute('data-theme', localTheme);
-    }, [theme])
+    
 
     const handleThemeToggle = e => {
         console.log(e.target.checked)

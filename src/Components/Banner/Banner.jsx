@@ -8,14 +8,22 @@ import service7 from '../../assets/service_7.avif'
 import './Banner.css'
 import { AwesomeButton } from "react-awesome-button";
 import { useState } from "react";
+import useAuth from "../../Hooks/useAuth";
 
 const Banner = () => {
     const [full, setFull] = useState(false);
+    const {theme} = useAuth();
+    console.log(theme)
     const handleLearnMore = () =>{
         setFull(!full);
     }
     return (
-        <div className="flex md:flex-row flex-col md:gap-6 gap-2 mt-10">
+        <div className={
+            theme === 'sunset'?
+            "flex md:flex-row flex-col md:gap-6 gap-2 mt-10 text-gray-100"
+            :
+            "flex md:flex-row flex-col md:gap-6 gap-2 mt-10"
+        }>
             <div className="md:w-3/4 w-full">
                 <TypeAnimation
                     splitter={(str) => str.split(/(?=)/)}
@@ -33,12 +41,12 @@ const Banner = () => {
                     {
                         full?
                         <div className=" p-4">
-                            <p className="mt-3 md:text-lg text-sm text-justify font-medium mb-5">Welcome to Electra Repair, your trusted destination for all your electronic device repair needs. With our team of skilled technicians, we offer fast, reliable, and professional service. Whether it is a cracked phone screen, a malfunctioning laptop battery, or any other electronic issue, we are here to help. Our commitment to quality ensures that your devices are in good hands. Trust Electra Repair for efficient solutions and get back to enjoying your devices hassle-free. Explore our comprehensive range of repair services tailored to meet your electronic device needs. From smartphones to laptops, tablets to TVs, we specialize in fixing a wide array of issues. With our expertise and dedication to excellence, we ensure your devices are restored to optimal functionality. Trust us for top-notch repairs and enjoy seamless performance from your favorite gadgets.</p>
+                            <p className = "mt-3 md:text-lg text-sm text-justify font-medium mb-5">Welcome to Electra Repair, your trusted destination for all your electronic device repair needs. With our team of skilled technicians, we offer fast, reliable, and professional service. Whether it is a cracked phone screen, a malfunctioning laptop battery, or any other electronic issue, we are here to help. Our commitment to quality ensures that your devices are in good hands. Trust Electra Repair for efficient solutions and get back to enjoying your devices hassle-free. Explore our comprehensive range of repair services tailored to meet your electronic device needs. From smartphones to laptops, tablets to TVs, we specialize in fixing a wide array of issues. With our expertise and dedication to excellence, we ensure your devices are restored to optimal functionality. Trust us for top-notch repairs and enjoy seamless performance from your favorite gadgets.</p>
                             <AwesomeButton onPress={handleLearnMore} className='rounded-lg mx-auto' type="secondary">See Less</AwesomeButton>
                         </div>
                         :
                         <div className=" p-4">
-                            <p className="mt-3 md:text-lg text-sm text-justify font-medium mb-5">Welcome to Electra Repair, your trusted destination for all your electronic device repair needs. With our team of skilled technicians, we offer fast, reliable, and professional service. Whether it is a cracked phone screen, a malfunctioning laptop battery, or any other electronic issue, we are here to help. Our commitment to quality ensures that your devices are in good hands.</p>
+                            <p className= "mt-3 md:text-lg text-sm text-justify font-medium mb-5">Welcome to Electra Repair, your trusted destination for all your electronic device repair needs. With our team of skilled technicians, we offer fast, reliable, and professional service. Whether it is a cracked phone screen, a malfunctioning laptop battery, or any other electronic issue, we are here to help. Our commitment to quality ensures that your devices are in good hands.</p>
                             <AwesomeButton onPress={handleLearnMore} className='rounded-lg mx-auto' type="secondary">See More</AwesomeButton>
                         </div>
                     }

@@ -13,7 +13,7 @@ import axios from "axios";
 const ServiceDetails = () => {
     const [startDate, setStartDate] = useState(new Date())
     const serviceDetails = useLoaderData();
-    const { user } = useAuth();
+    const { user , theme} = useAuth();
     const { _id, service, area, image, price, description, providerName, providerImage, providerEmail } = serviceDetails;
 
     const handlePurchase = e =>{
@@ -29,7 +29,7 @@ const ServiceDetails = () => {
         const price = form.price.value;
         const instruction = form.instruction.value;
 
-        const newService = {id, name, email, username, useremail, service, image, price, instruction, date: startDate, serviceStatus: "pending"};
+        const newService = {id, name, email, username, providerImage, useremail, service, image, price, instruction, date: startDate, serviceStatus: "pending"};
         axios.post('http://localhost:5000/booked-services', newService)
         .then(res=>{
             if(res.data.insertedId){
@@ -39,7 +39,12 @@ const ServiceDetails = () => {
         form.reset();
     }
     return (
-        <div>
+        <div className={
+            theme==='sunset'?
+            "text-gray-100"
+            :
+            "text-black"
+        }>
             <Helmet>
                 <title>
                     Electra Repair | {service}
