@@ -42,12 +42,12 @@ const ServiceDetails = () => {
         <div>
             <Helmet>
                 <title>
-                    Tour Ease | {service}
+                    Electra Repair | {service}
                 </title>
             </Helmet>
             <h2 className="text-2xl font-bold my-4 text-center">{service}</h2>
             <img className='rounded-lg w-3/4 my-3 mx-auto' src={image} alt={service} />
-            <h2 className="text-2xl font-semibold my-4 text-center">About {service}</h2>
+            <h2 className="text-2xl font-semibold my-4 text-center">{service}</h2>
             <p className="text-center text-lg font-medium my-2">{description}</p>
             <div className='flex items-center text-lg font-medium'>
                 <MdLocationOn className='text-lg mr-2'></MdLocationOn>

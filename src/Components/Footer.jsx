@@ -1,7 +1,7 @@
 import logo from '../assets/logo.png'
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-10 bg-base-300 text-base-content rounded">
+        <footer className="footer footer-center p-10 bg-base-300 text-base-content rounded mt-10">
             <aside>
                 <img className='rounded-md w-1/3' src={logo} alt="" />
                 <p className='font-bold mt-1'>Electra Repair - Providing reliable tech service</p>

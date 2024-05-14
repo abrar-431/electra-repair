@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 const PopularCards = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        axios('http://localhost:5000/services')
+        axios.get('http://localhost:5000/services')
             .then(res => {
                 setServices(res.data);
             })
     }, [])
-    console.log(typeof services)
+    
     return (
         <div className="my-5 ">
             <Slide delay={1000} direction="right"><h2 className="text-center mx-auto border-l-4 md:w-1/2 w-full border-blue-800 md:text-2xl text-lg font-bold">Popular Services : Explore Top Services for Your Electronic Needs</h2></Slide>
