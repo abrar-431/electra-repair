@@ -13,6 +13,7 @@ import ManageService from "../Layout/ManageService";
 import ErrorPage from "../Components/ErrorPage";
 import BookedService from "../Layout/BookedService";
 import UpdateService from "../Components/UpdateService";
+import ServiceToDo from "../Components/ServiceToDo";
 
   const router = createBrowserRouter([
     {
@@ -59,6 +60,11 @@ import UpdateService from "../Components/UpdateService";
           path: '/update-service/:id',
           element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
           loader: ({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+        },
+        {
+          path: '/todo-service',
+          element: <PrivateRoute><ServiceToDo></ServiceToDo></PrivateRoute>,
+          loader: ()=>fetch('http://localhost:5000/booked-services')
         }
       ]
     },
