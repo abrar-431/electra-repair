@@ -15,7 +15,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const [show, setShow] = useState(false);
-    const { signIn, googleSignIn } = useAuth();
+    const { signIn, googleSignIn, theme } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const handleShow = () => {
@@ -32,7 +32,7 @@ const Login = () => {
                 console.log(res.user);
                 toast.success('Your login was successful!');
                 {
-                    location?.state? navigate(location.state) : navigate('/');
+                    location?.state ? navigate(location.state) : navigate('/');
                 }
             })
             .catch(error => {
@@ -48,7 +48,7 @@ const Login = () => {
                 console.log(res.user);
                 toast.success('Your login was successful!');
                 {
-                    location?.state? navigate(location.state) : navigate('/');
+                    location?.state ? navigate(location.state) : navigate('/');
                 }
             })
             .catch(error => {
@@ -71,10 +71,18 @@ const Login = () => {
                             <div className='bg-blue-300 md:p-16 p-4 md:m-12 m-2 rounded-lg shadow-lg'>
                                 <div className="form-control">
                                     <label className="label font-semibold">
-                                        <span className="label-text">Email</span>
+                                        <span className={theme === 'sunset' ?
+                                            "label-text text-gray-200"
+                                            :
+                                            "label-text"
+                                        }>Email</span>
                                     </label>
                                     <div className=' relative'>
-                                        <input type="email" placeholder="Email" name='email' className="input input-bordered w-full pl-12" required />
+                                        <input type="email" placeholder="Email" name='email' className={theme === 'sunset' ?
+                                            "input input-bordered w-full pl-12 bg-gray-50"
+                                            :
+                                            "input input-bordered w-full pl-12"
+                                        } required />
                                         <div className='absolute top-1/3 left-3'>
                                             <MdEmail className='text-xl' />
                                         </div>
@@ -82,10 +90,18 @@ const Login = () => {
                                 </div>
                                 <div className="form-control">
                                     <label className="label font-semibold">
-                                        <span className="label-text">Password</span>
+                                        <span className={theme === 'sunset' ?
+                                            "label-text text-gray-200"
+                                            :
+                                            "label-text"
+                                        }>Password</span>
                                     </label>
                                     <div className=' relative'>
-                                        <input type={show ? 'text' : 'password'} placeholder="Password" name='password' className="input input-bordered w-full pl-12" required />
+                                        <input type={show?"text":"password"} placeholder="Password" name='password' className={theme === 'sunset' ?
+                                            "input input-bordered w-full pl-12 bg-gray-50"
+                                            :
+                                            "input input-bordered w-full pl-12"
+                                        } required />
                                         <div className='absolute top-1/3 left-3'>
                                             {
                                                 show ? <FaRegEye onClick={handleShow} className='text-xl' />

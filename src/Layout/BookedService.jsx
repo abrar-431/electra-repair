@@ -5,7 +5,7 @@ import { AwesomeButton } from "react-awesome-button";
 
 const BookedService = () => {
     const services = useLoaderData();
-    const { user } = useAuth();
+    const { user , theme} = useAuth();
     const bookedServices = services.filter(service => service.useremail === user.email);
 
     return (
@@ -15,7 +15,11 @@ const BookedService = () => {
                     <title>Electric Repair | Booked Services</title>
                 </Helmet>
                 {bookedServices.length > 0 ?
-                    <table className="table">
+                    <table className={theme==='sunset'?
+                    "table text-gray-100"
+                    :
+                    "table"
+                    }>
                         {/* head */}
                         <thead>
                             <tr>
@@ -44,7 +48,11 @@ const BookedService = () => {
                         </tbody>
                     </table>
                     :
-                    <div>
+                    <div className={theme==='sunset'?
+                        "text-gray-100"
+                        :
+                        ""
+                    }>
                         <p className="text-lg font-semibold mb-3 text-center">You have no booked services, you can explore services.</p>
                         <div className="flex justify-center">
                         <Link to='/services'>

@@ -4,11 +4,17 @@ import { FaLandmark, FaMoneyCheckDollar } from 'react-icons/fa6';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 const ManageServiceDetails = ({ SingleService, handleDelete }) => {
     const { _id, service, area, image, price, description } = SingleService;
+    const {theme} = useAuth();
     
     return (
-        <div className='border-gray-200 border-2 p-4 rounded-xl flex flex-col'>
+        <div className={theme==='sunset'?
+        'border-gray-200 border-2 p-4 rounded-xl flex flex-col text-gray-100'
+        :
+        'border-gray-200 border-2 p-4 rounded-xl flex flex-col'
+        }>
             <div className='flex-grow'>
                 <img className='rounded-lg mx-auto w-3/4' src={image} alt={service} />
                 <h2 className="text-2xl font-bold my-3">{service}</h2>
