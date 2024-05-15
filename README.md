@@ -14,5 +14,11 @@ Key Features:
 ○ Book Now Modal: Conveniently book repair appointments directly from the View Details page using our user-friendly booking modal. Select your preferred service date and provide any special instructions for our technicians.
 ○ Dark Mode: Enhance your browsing experience with our theme toggling feature, allowing you to switch between light and dark themes based on your preference. 
 
+Additional Points
+○ Testimonials Section: Explore testimonials from satisfied customers who have experienced our reliable repair services firsthand.
+○ Contact Form: Reach out to our friendly team with any questions or inquiries using our convenient contact form. We're here to help!
+○ FAQ Section: I have added a dedicate section for the frequently asked questions
+○ Packages used: I have used react-content-loader for loading state, react type animation for typing animation in the banner section, swiper for images in banner, framer motion and react-awesome-reveal for catchy animations etc.
+
 Category:
 Electronic Item Repairing Services

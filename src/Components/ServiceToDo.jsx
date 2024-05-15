@@ -7,7 +7,6 @@ const ServiceToDo = () => {
     const bookedServices = useLoaderData();
     const { user, theme } = useAuth();
     const toDoServices = bookedServices.filter(service => service.email === user.email);
-    console.log(toDoServices)
     return (
         <div className="mt-10">
             {
