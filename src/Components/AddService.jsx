@@ -23,7 +23,7 @@ const AddService = () => {
         providerImage: user.photoURL,
         providerName:user.displayName,
     };
-    axios.post('http://localhost:5000/services', newUser)
+    axios.post('https://assignment-11-server-side-alpha.vercel.app/services', newUser)
     .then(res=>{
         if(res.data.insertedId){
             toast('Your service was added successfully');

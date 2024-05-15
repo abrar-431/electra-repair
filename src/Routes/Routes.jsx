@@ -28,7 +28,7 @@ import ServiceToDo from "../Components/ServiceToDo";
         {
             path: '/services',
             element: <Services></Services>,
-            loader: ()=>fetch('http://localhost:5000/services')
+            loader: ()=>fetch('https://assignment-11-server-side-alpha.vercel.app/services')
         },
         {
           path: '/register',
@@ -45,7 +45,7 @@ import ServiceToDo from "../Components/ServiceToDo";
         {
           path: '/services/:id',
           element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
-          loader: ({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+          loader: ({params})=>fetch(`https://assignment-11-server-side-alpha.vercel.app/services/${params.id}`)
         },
         {
           path: '/manage-service',
@@ -54,17 +54,17 @@ import ServiceToDo from "../Components/ServiceToDo";
         {
           path: '/booked-service',
           element: <PrivateRoute><BookedService></BookedService></PrivateRoute>,
-          loader: ()=>fetch('http://localhost:5000/booked-services')
+          loader: ()=>fetch('https://assignment-11-server-side-alpha.vercel.app/booked-services')
         },
         {
           path: '/update-service/:id',
           element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
-          loader: ({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+          loader: ({params})=>fetch(`https://assignment-11-server-side-alpha.vercel.app/services/${params.id}`)
         },
         {
           path: '/todo-service',
           element: <PrivateRoute><ServiceToDo></ServiceToDo></PrivateRoute>,
-          loader: ()=>fetch('http://localhost:5000/booked-services')
+          loader: ()=>fetch('https://assignment-11-server-side-alpha.vercel.app/booked-services')
         }
       ]
     },

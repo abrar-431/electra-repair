@@ -15,7 +15,7 @@ const ToDoDetails = ({ singleService }) => {
     const {theme} = useAuth();
 
     const handleServiceStatus = (id, status) =>{
-        axios.patch(`http://localhost:5000/booked-services/${id}`, {status})
+        axios.patch(`https://assignment-11-server-side-alpha.vercel.app/booked-services/${id}`, {status})
         .then(res=>{
             if(res.data.modifiedCount > 0){
                 toast('Service status updated successfully!');

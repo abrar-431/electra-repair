@@ -11,7 +11,7 @@ import { AwesomeButton } from "react-awesome-button";
 const ManageService = () => {
     const [services, setServices] = useState([]);
     const { user, theme } = useAuth();
-    const url = `http://localhost:5000/services?email=${user.email}`;
+    const url = `https://assignment-11-server-side-alpha.vercel.app/services?email=${user.email}`;
     useEffect(() => {
         axios.get(url)
             .then(res => {
@@ -28,7 +28,7 @@ const ManageService = () => {
         })
             .then(willDelete => {
                 if (willDelete) {
-                    axios.delete(`http://localhost:5000/services/${id}`)
+                    axios.delete(`https://assignment-11-server-side-alpha.vercel.app/services/${id}`)
                         .then(res => {
                             if (res.data.deletedCount > 0) {
                                 toast("Your service was deleted successfully");

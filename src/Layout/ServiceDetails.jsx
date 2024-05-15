@@ -30,7 +30,7 @@ const ServiceDetails = () => {
         const instruction = form.instruction.value;
 
         const newService = {id, name, email, username, providerImage, useremail, service, image, price, instruction, date: startDate, serviceStatus: "pending"};
-        axios.post('http://localhost:5000/booked-services', newService)
+        axios.post('https://assignment-11-server-side-alpha.vercel.app/booked-services', newService)
         .then(res=>{
             if(res.data.insertedId){
                 toast('Your purchase was successful!');

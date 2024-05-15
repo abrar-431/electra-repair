@@ -10,7 +10,7 @@ const PopularCards = () => {
     const [services, setServices] = useState([]);
     const {theme} = useAuth();
     useEffect(() => {
-        axios.get('http://localhost:5000/popular-services')
+        axios.get('https://assignment-11-server-side-alpha.vercel.app/popular-services')
             .then(res => {
                 setServices(res.data);
             })

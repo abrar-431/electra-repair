@@ -13,7 +13,7 @@ const Services = () => {
     const { theme } = useAuth();
     useEffect(()=>{
     
-    axios.get(`http://localhost:5000/searched-services/?search=${search}`)
+    axios.get(`https://assignment-11-server-side-alpha.vercel.app/searched-services/?search=${search}`)
     .then(res=>{
         setServices(res.data)
     })

@@ -25,7 +25,7 @@ const UpdateService = () => {
         const updatedService = {
             service, area, image, price, description,
         };
-        axios.put(`http://localhost:5000/services/${_id}`, updatedService)
+        axios.put(`https://assignment-11-server-side-alpha.vercel.app/services/${_id}`, updatedService)
         .then(res=>{
             if(res.data.modifiedCount > 0){
                 toast('Your service was updated successfully');
