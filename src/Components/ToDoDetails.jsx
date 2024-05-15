@@ -7,10 +7,12 @@ import { FaCalendarDays } from 'react-icons/fa6';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { useState } from 'react';
+import useAuth from '../Hooks/useAuth';
 
 const ToDoDetails = ({ singleService }) => {
     const { _id, service, image, instruction, date, serviceStatus, username } = singleService;
     const [serviceStat, setServiceStatus] = useState(serviceStatus);
+    const {theme} = useAuth();
 
     const handleServiceStatus = (id, status) =>{
         axios.patch(`http://localhost:5000/booked-services/${id}`, {status})
@@ -23,7 +25,7 @@ const ToDoDetails = ({ singleService }) => {
     }
     return (
         <div>
-            <details className="dropdown p-4 w-[345px] text-center">
+            <details className={theme==='sunset'? "dropdown p-4 max-w-[345px] text-center text-gray-100" : "dropdown p-4 max-w-[345px] text-center"}>
                 <summary className="m-1 btn">Change Service Status</summary>
                 <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                     <li onClick={()=>handleServiceStatus(_id, 'Pending')}><a>Pending</a></li>

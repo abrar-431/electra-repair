@@ -13,7 +13,6 @@ import useAuth from "../../Hooks/useAuth";
 const Banner = () => {
     const [full, setFull] = useState(false);
     const {theme} = useAuth();
-    console.log(theme)
     const handleLearnMore = () =>{
         setFull(!full);
     }

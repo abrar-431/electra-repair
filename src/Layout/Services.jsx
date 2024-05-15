@@ -12,7 +12,6 @@ const Services = () => {
     const [services, setServices] = useState(loadedServices);
     const { theme } = useAuth();
     useEffect(()=>{
-    console.log(search)
     
     axios.get(`http://localhost:5000/searched-services/?search=${search}`)
     .then(res=>{
@@ -31,7 +30,7 @@ const Services = () => {
             <Helmet>
                 <title>Electra Repair | Services</title>
             </Helmet>
-            <form onSubmit={handleSearch} className="w-1/4 mx-auto">
+            <form onSubmit={handleSearch} className="lg:w-1/4 md:w-1/3 w-3/4 mx-auto">
                 <div className=' relative'>
                     <input type="text" placeholder="Search Service" name='search' className={theme === 'sunset' ?
                         "input input-bordered w-full pl-12 bg-gray-50"

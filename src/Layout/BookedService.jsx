@@ -10,7 +10,7 @@ const BookedService = () => {
 
     return (
         <div className="mt-10">
-            <div>
+            <div className="overflow-x-auto">
                 <Helmet>
                     <title>Electric Repair | Booked Services</title>
                 </Helmet>
