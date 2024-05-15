@@ -8,7 +8,7 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { Fa0, FaMapLocationDot } from 'react-icons/fa6';
+import { Fa0 } from 'react-icons/fa6';
 import { FaExpand, FaMoneyBillWave } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import {  Slide } from 'react-awesome-reveal';
@@ -28,7 +28,7 @@ const ExpandMore = styled((props) => {
 
 export default function PopularCardDetails({ singleService, idx }) {
     const [expanded, setExpanded] = React.useState(false);
-    const { _id, service, image, price,  name, providerImage } = singleService;
+    const { _id, service, image, price,  name, providerImage, description } = singleService;
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -73,6 +73,11 @@ export default function PopularCardDetails({ singleService, idx }) {
                         </ExpandMore>
                     </CardActions>
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
+                        <CardContent>
+                            <Typography>
+                                <p className='text-lg font-medium'>{description}</p>
+                            </Typography>
+                        </CardContent>
                         <CardContent>
                             <Typography className=' flex justify-center'>
                                 <Link to={`/services/${_id}`}>
