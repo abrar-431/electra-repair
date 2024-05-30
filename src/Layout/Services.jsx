@@ -5,19 +5,20 @@ import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import { IoSearchSharp } from "react-icons/io5";
 import axios from "axios";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Services = () => {
     const loadedServices = useLoaderData();
     const [search, setSearch] = useState('');
+    const [location, setLocation] = useState('');
     const [services, setServices] = useState(loadedServices);
     const { theme } = useAuth();
-    useEffect(()=>{
-    
-    axios.get(`https://assignment-11-server-side-alpha.vercel.app/searched-services/?search=${search}`)
-    .then(res=>{
-        setServices(res.data)
-    })
-    },[search])
+    useEffect(() => {
+        axios.get(`https://assignment-11-server-side-alpha.vercel.app/searched-services/?search=${search}&location=${location}`)
+            .then(res => {
+                setServices(res.data)
+            })
+    }, [search, location])
 
     const handleSearch = e => {
         e.preventDefault();
@@ -25,28 +26,67 @@ const Services = () => {
         setSearch(text)
         e.target.reset();
     }
+
+    const handleLocationSearch = area =>{
+        setSearch('')
+        setLocation(area)
+    }
+    console.log(location)
     return (
         <div className="grid grid-cols-1 gap-6 my-10">
             <Helmet>
                 <title>Electra Repair | Services</title>
             </Helmet>
-            <form onSubmit={handleSearch} className="lg:w-1/4 md:w-1/3 w-3/4 mx-auto">
-                <div className=' relative'>
-                    <input type="text" placeholder="Search Service" name='search' className={theme === 'sunset' ?
-                        "input input-bordered w-full pl-12 bg-gray-50"
-                        :
-                        "input input-bordered w-full pl-12"
-                    } />
-                    <div className='absolute top-1/3 left-3'>
-                        <button>
-                            <IoSearchSharp className='text-xl' />
-                        </button>
+            <div className="mx-auto flex md:flex-row flex-col gap-6">
+                <form onSubmit={handleSearch} >
+                    <div className=' relative'>
+                        <input type="text" placeholder="Search Service" name='search' className={theme === 'sunset' ?
+                            "input input-bordered w-full pl-12 bg-gray-50"
+                            :
+                            "input input-bordered w-full pl-12"
+                        } />
+                        <div className='absolute top-1/3 left-3'>
+                            <button>
+                                <IoSearchSharp className='text-xl' />
+                            </button>
+                        </div>
                     </div>
+                </form>
+                <div className=''>
+                    {/* Open the modal using document.getElementById('ID').showModal() method */}
+                    <button className="flex gap-4 items-center border-2 border-gray-300 text-info p-2 rounded-lg " onClick={() => document.getElementById('my_modal_1').showModal()}>
+                        <p className="text-lg">Your Location</p>
+                        <FaLocationDot className="text-xl"></FaLocationDot>
+                    </button>
+                    <dialog id="my_modal_1" className="modal">
+                        <div className="modal-box">
+                            <h2 className="md:text-xl text-base font-bold text-center flex justify-center items-center gap-2">
+                                Select Your <FaLocationDot className="text-xl text-info"></FaLocationDot> Area
+                            </h2>
+                            <div className="divider"></div>
+                            <div className="grid md:grid-cols-3 grid-cols-1 gap-2">
+                                {
+                                    loadedServices.map(service=><div key={service._id}>
+                                    <form method="dialog">
+                                        {/* if there is a button in form, it will close the modal */}
+                                        <button onClick={()=>handleLocationSearch(service.area)} className="btn w-full">{service.area}</button>
+                                    </form>
+                                </div>)
+                                }
+                            </div>
+                            <div className="modal-action">
+                                <form method="dialog">
+                                    {/* if there is a button in form, it will close the modal */}
+                                    <button className="btn">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
                 </div>
-            </form>
-            {
-                services.map((service, idx) => <Service singleService={service} idx={idx} key={service._id}></Service>)
-            }
+            </div>
+                {
+                    services.map((service, idx) => <Service singleService={service} idx={idx} key={service._id}></Service>)
+                }
         </div>
     );
 };
