@@ -51,5 +51,4 @@ To run this project, you will need to add the following environment variables to
 `VITE_STORAGEBUCKET`
 `VITE_MESSAGINGSENDERID`
 `VITE_APPID`
-`VITE_IMAGE_HOSTING_KEY`
 
